@@ -56,3 +56,11 @@ h1 {
     background-color: #5b7cff;
   }
 }
+.input.error  {
+  border-color: red;
+}
+.error-label {
+  display: block;
+  color: red;
+  margin-bottom: 10px;
+}
