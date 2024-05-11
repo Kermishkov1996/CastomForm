@@ -29,7 +29,7 @@ function validation(form) {
     }
 
     function validateName(name) {
-        let regName = /^[а-я]+$/;
+        let regName = /^[А-Яа-я]+$/;
         return regName.test(String(name));
     }
 
