@@ -29,17 +29,17 @@ function validation(form) {
     }
 
     function validateName(name) {
-        let regName = /^[А-Яа-я]+$/;
+        const regName = /^[А-Яа-я]+$/;
         return regName.test(String(name));
     }
 
     function validatePhone(phone) {
-        let regPh = /^[0-9\s]*$/;
+        const regPh = /^[0-9\s]*$/;
         return regPh.test(String(phone));
     }
 
     function validateEmail(email) {
-        let regEm = /^[\w-]+@([\w-]+\.)+[\w-]{2,4}$/;
+        const regEm = /^[\w-]+@([\w-]+\.)+[\w-]{2,4}$/;
         return regEm.test(String(email).toLowerCase());
     }
 
@@ -51,7 +51,7 @@ function validation(form) {
     for (const input of allInputs) {
         removeError(input);
 
-            if (input.value === '') {
+            if (input.value == '') {
                 removeError(input);
                 createError(input, 'Поле не заполнено');
                 result = false;
@@ -101,7 +101,7 @@ form.addEventListener('submit', function(event) {
     event.preventDefault()
 
     if (validation(this) === true) {
-        alert('Форма проверена')
+        alert('Форма отправлена успешно')
     }
 })
 
