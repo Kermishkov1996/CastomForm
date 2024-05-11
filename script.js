@@ -33,6 +33,10 @@ function validation(form) {
         return regEm.test(String(email).toLowerCase());
     }
 
+    function validatePhone(phone) {
+        let regPh = /^[0-9\s]*$/;
+        return regPh.test(String(phone));
+    }
 
     let result = true;
     let emailValue = inputEmail.value;
@@ -46,6 +50,15 @@ function validation(form) {
                 createError(input, 'Поле не заполнено');
                 result = false;
             }
+    }
+
+    if (!validatePhone(phoneValue)) {
+        removeError(inputPhone);
+        createError(inputPhone, 'Неверный телефон');
+        inputPhone.classList.add('error');
+        result = false;
+    } else {
+        inputPhone.classList.remove('error');
     }
 
     if(!validateEmail(emailValue)) {
