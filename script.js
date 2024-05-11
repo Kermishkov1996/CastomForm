@@ -1,28 +1,9 @@
 let form = document.querySelector('.form'),
     allInputs = document.querySelectorAll('.input'),
+    inputName = document.querySelector('.input-name'),
     inputPhone = document.querySelector('.input-phone'),
     inputEmail = document.querySelector('.input-email'),
     inputCheckbox = document.querySelector('.input-checkbox');
-
-// form.onsubmit = function() {
-//     let phoneValue = inputPhone.value;
-//     let emailValue = inputEmail.value;
-//     let emptyInputs = Array.from(formInputs).filter(input => input.value === '');
-//
-//
-//     formInputs.forEach(function(input) {
-//         if (input.value === '') {
-//             input.classList.add('error');
-//         } else {
-//             input.classList.remove('error');
-//         }
-//     });
-//
-//     if (emptyInputs.length !== 0) {
-//         console.log("inputs not filled");
-//         return false;
-//     }
-// }
 
 
 function validation(form) {
@@ -48,11 +29,15 @@ function validation(form) {
     }
 
     function validateEmail(email) {
-        let reg = /^[\w-]+@([\w-]+\.)+[\w-]{2,4}$/;
-        return reg.test(String(email).toLowerCase());
+        let regEm = /^[\w-]+@([\w-]+\.)+[\w-]{2,4}$/;
+        return regEm.test(String(email).toLowerCase());
     }
 
+
     let result = true;
+    let emailValue = inputEmail.value;
+    let phoneValue = inputPhone.value;
+
     for (const input of allInputs) {
         removeError(input);
 
@@ -63,27 +48,28 @@ function validation(form) {
             }
     }
 
-    let emailValue = inputEmail.value;
     if(!validateEmail(emailValue)) {
-        console.log('email not valid')
+        removeError(inputEmail);
+        createError(inputEmail, 'Неверный эмайл');
         inputEmail.classList.add('error');
         result = false;
     } else {
         inputEmail.classList.remove('error');
     }
 
-    if (!inputCheckbox.checked) {
-        console.log('checkbox not checked')
-        inputCheckbox.classList.add('error');
-        result = false;
-    } else {
-        inputCheckbox.classList.remove('error');
-    }
+    // if (!inputCheckbox.checked) {
+    //     removeError(inputCheckbox);
+    //     createError(inputCheckbox, 'checkbox not checked');
+    //     inputCheckbox.classList.add('error');
+    //     result = false;
+    // } else {
+    //     inputCheckbox.classList.remove('error');
+    // }
 
     return result
 }
 
-document.getElementById('add-form').addEventListener('submit', function(event) {
+form.addEventListener('submit', function(event) {
     event.preventDefault()
 
     if (validation(this) === true) {
