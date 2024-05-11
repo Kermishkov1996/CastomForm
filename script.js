@@ -85,14 +85,14 @@ function validation(form) {
         inputEmail.classList.remove('error');
     }
 
-    // if (!inputCheckbox.checked) {
-    //     removeError(inputCheckbox);
-    //     createError(inputCheckbox, 'checkbox not checked');
-    //     inputCheckbox.classList.add('error');
-    //     result = false;
-    // } else {
-    //     inputCheckbox.classList.remove('error');
-    // }
+    if (!inputCheckbox.checked) {
+        removeError(inputCheckbox);
+        createError(inputCheckbox, 'checkbox not checked');
+        inputCheckbox.classList.add('error');
+        result = false;
+    } else {
+        inputCheckbox.classList.remove('error');
+    }
 
     return result
 }
