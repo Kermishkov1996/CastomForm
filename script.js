@@ -28,9 +28,9 @@ function validation(form) {
         parent.append(errorLabel);
     }
 
-    function validateEmail(email) {
-        let regEm = /^[\w-]+@([\w-]+\.)+[\w-]{2,4}$/;
-        return regEm.test(String(email).toLowerCase());
+    function validateName(name) {
+        let regName = /^[а-я]+$/;
+        return regName.test(String(name));
     }
 
     function validatePhone(phone) {
@@ -38,18 +38,33 @@ function validation(form) {
         return regPh.test(String(phone));
     }
 
+    function validateEmail(email) {
+        let regEm = /^[\w-]+@([\w-]+\.)+[\w-]{2,4}$/;
+        return regEm.test(String(email).toLowerCase());
+    }
+
     let result = true;
-    let emailValue = inputEmail.value;
+    let nameValue = inputName.value;
     let phoneValue = inputPhone.value;
+    let emailValue = inputEmail.value;
 
     for (const input of allInputs) {
         removeError(input);
 
-            if (input.value == '') {
+            if (input.value === '') {
                 removeError(input);
                 createError(input, 'Поле не заполнено');
                 result = false;
             }
+    }
+
+    if (!validateName(nameValue)) {
+        removeError(inputName);
+        createError(inputName, 'Только русские буквы');
+        inputName.classList.add('error');
+        result = false;
+    } else {
+        inputName.classList.remove('error');
     }
 
     if (!validatePhone(phoneValue)) {
