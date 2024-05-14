@@ -44,6 +44,9 @@ h1 {
 .input-checkbox {
 	margin-bottom: 5px;
 }
+.label-checkbox {
+	font-size: 15px;
+}
 .btn {
   display: block;
   border: none;
@@ -69,4 +72,5 @@ h1 {
   display: block;
   color: red;
   margin-bottom: 10px;
+	font-size: 12px;
 }

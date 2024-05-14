@@ -84,7 +84,7 @@ function validation(form) {
 
     if (!inputCheckbox.checked) {
       removeError(inputCheckbox);
-      createError(inputCheckbox, "checkbox not checked");
+      createError(inputCheckbox, "Принять соглашение");
       inputCheckbox.classList.add("error");
       result = false;
     } else {
