@@ -5,6 +5,12 @@ let form = document.querySelector(".form"),
   inputEmail = document.querySelector(".input-email"),
   inputCheckbox = document.querySelector(".input-checkbox");
 
+let maskOptions = {
+  mask: "8(000)000-00-00",
+  lazy: false,
+};
+let mask = new IMask(inputPhone, maskOptions);
+
 function validation(form) {
   function removeError(input) {
     const parent = input.parentNode;
@@ -32,7 +38,7 @@ function validation(form) {
   }
 
   function validatePhone(phone) {
-    let regPh = /^[0-9\s]*$/;
+    let regPh = /^[8][(][0-9]{3}[)][0-9]{3}[-][0-9]{2}[-][0-9]{2}$/;
     return regPh.test(String(phone));
   }
 
