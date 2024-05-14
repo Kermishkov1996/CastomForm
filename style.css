@@ -41,6 +41,9 @@ h1 {
   margin-bottom: 10px;
   font-size: 15px;
 }
+.input-checkbox {
+	margin-bottom: 5px;
+}
 .btn {
   display: block;
   border: none;
