@@ -55,7 +55,7 @@ function validation(form) {
   for (const input of allInputs) {
     removeError(input);
 
-    if (!validateName(nameValue)) {
+    if (!validateName(nameValue) && nameValue !== "") {
       removeError(inputName);
       createError(inputName, "Только русские буквы");
       inputName.classList.add("error");
@@ -64,7 +64,7 @@ function validation(form) {
       inputName.classList.remove("error");
     }
 
-    if (!validatePhone(phoneValue)) {
+    if (!validatePhone(phoneValue) && phoneValue !== "") {
       removeError(inputPhone);
       createError(inputPhone, "Неверный телефон");
       inputPhone.classList.add("error");
@@ -73,7 +73,7 @@ function validation(form) {
       inputPhone.classList.remove("error");
     }
 
-    if (!validateEmail(emailValue)) {
+    if (!validateEmail(emailValue) && emailValue !== "") {
       removeError(inputEmail);
       createError(inputEmail, "Неверный эмайл");
       inputEmail.classList.add("error");
@@ -91,12 +91,13 @@ function validation(form) {
       removeError(inputCheckbox);
     }
 
-    if (input.value == "") {
-      removeError(input);
-      createError(input, "Поле не заполнено");
-      result = false;
-    }
-  }
+		if (input.value == "") {
+			removeError(input);
+			createError(input, "Поле не заполнено");
+			result = false;
+		}
+	}
+	
 
   return result;
 }
