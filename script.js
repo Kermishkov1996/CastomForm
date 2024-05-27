@@ -97,7 +97,6 @@ function validation(form) {
       result = false;
     }
   }
-
   return result;
 }
 
@@ -119,11 +118,11 @@ let select = function () {
 
   function selectChoose() {
     let text = this.innerText;
-		let select = this.closest(".select")
-    let currentText = select.querySelector('.select__current');
+    let select = this.closest(".select");
+    let currentText = select.querySelector(".select__current");
 
-		currentText.innerText = text;
-		select.classList.remove('is-active')
+    currentText.innerText = text;
+    select.classList.remove("is-active");
   }
 };
 

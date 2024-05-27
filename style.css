@@ -83,6 +83,7 @@ h1 {
 }
 .select__header {
 	display: flex;
+	background-color: #fff;
 	border: 1px solid #ccc;
 	cursor: pointer;
 	border-radius: 4px;
@@ -107,8 +108,10 @@ h1 {
 	left: 0;
 	right: 0;
 	top: 100%;
+	background-color: #f5f5f5;
 	border: 1px solid #ccc;
 	border-top: 0;
+	border-radius: 0 0 4px 4px;
 	display: none;
 }
 .select_item {
