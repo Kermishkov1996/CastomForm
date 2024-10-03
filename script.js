@@ -73,10 +73,9 @@ function validateEmail(email) {
   return regEm.test(String(email).toLowerCase());
 }
 
-function inputValidateError() {
+
+function validateNameError() {
   let nameValue = inputName.value;
-  let phoneValue = inputPhone.value;
-  let emailValue = inputEmail.value;
 
   if (!validateName(nameValue) && nameValue !== "") {
     removeError(inputName);
@@ -86,6 +85,10 @@ function inputValidateError() {
   } else {
     inputName.classList.remove("error");
   }
+}
+
+function validatePhoneError() {
+  let phoneValue = inputPhone.value;
 
   if (!validatePhone(phoneValue) && phoneValue !== "") {
     removeError(inputPhone);
@@ -95,6 +98,10 @@ function inputValidateError() {
   } else {
     inputPhone.classList.remove("error");
   }
+}
+
+function validateEmailError() {
+  let emailValue = inputEmail.value;
 
   if (!validateEmail(emailValue) && emailValue !== "") {
     removeError(inputEmail);
@@ -104,7 +111,9 @@ function inputValidateError() {
   } else {
     inputEmail.classList.remove("error");
   }
+}
 
+function validateCheckboxError() {
   if (!inputCheckbox.checked) {
     removeError(inputCheckbox);
     createError(inputCheckbox, "Принять соглашение");
@@ -119,16 +128,14 @@ form.addEventListener("input", inputHandler);
 
 function inputHandler() {
 	let result = true;
-
+	
 	for (const input of allInputs) {
 		removeError(input);
-
-		inputValidateError();
-
-		// validateNameError();
-		// validatePhoneError();
-		// validateEmailError();
-		// validateCheckboxError();
+		
+		validateNameError();
+		validatePhoneError();
+		validateEmailError();
+		validateCheckboxError();
 
 		if (input.value == "") {
 			removeError(input);
@@ -139,57 +146,11 @@ function inputHandler() {
 	return result;
 }
 
+
 function validation(form) {
-  // function validateNameError() {
-  //   let nameValue = inputName.value;
-
-  //   if (!validateName(nameValue) && nameValue !== "") {
-  //     removeError(inputName);
-  //     createError(inputName, "Только русские буквы");
-  //     inputName.classList.add("error");
-  //     result = false;
-  //   } else {
-  //     inputName.classList.remove("error");
-  //   }
-  // }
-
-  // function validatePhoneError() {
-  //   let phoneValue = inputPhone.value;
-
-  //   if (!validatePhone(phoneValue) && phoneValue !== "") {
-  //     removeError(inputPhone);
-  //     createError(inputPhone, "Неверный телефон");
-  //     inputPhone.classList.add("error");
-  //     result = false;
-  //   } else {
-  //     inputPhone.classList.remove("error");
-  //   }
-  // }
-
-  // function validateEmailError() {
-  //   let emailValue = inputEmail.value;
-
-  //   if (!validateEmail(emailValue) && emailValue !== "") {
-  //     removeError(inputEmail);
-  //     createError(inputEmail, "Неверный эмайл");
-  //     inputEmail.classList.add("error");
-  //     result = false;
-  //   } else {
-  //     inputEmail.classList.remove("error");
-  //   }
-  // }
-
-  // function validateCheckboxError() {
-  //   if (!inputCheckbox.checked) {
-  //     removeError(inputCheckbox);
-  //     createError(inputCheckbox, "Принять соглашение");
-  //     inputCheckbox.classList.add("error");
-  //     result = false;
-  //   } else {
-  //     removeError(inputCheckbox);
-  //   }
-  // }
-
+	if(!inputValidateError()) {
+		result = true;
+	}
 }
 
 form.addEventListener("submit", function (event) {
